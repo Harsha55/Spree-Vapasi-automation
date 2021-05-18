@@ -44,8 +44,9 @@ public class LoginTest {
         driver2.get("https://spree-vapasi.herokuapp.com/");
 
         WebDriverWait wait = new WebDriverWait(driver2,300);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='link-to-login']/a")));
-        driver2.findElement(By.xpath("//li[@id='link-to-login']/a")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("link-to-login")));
+        //driver2.findElement(By.xpath("//li[@id='link-to-login']/a")).click();
+        driver2.findElement(By.id("link-to-login")).click();
 
         WebElement username = driver2.findElement(By.id("spree_user_email"));
         username.sendKeys("kumariharsha33@gmail.com");
