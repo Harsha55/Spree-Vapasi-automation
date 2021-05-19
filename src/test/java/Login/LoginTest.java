@@ -69,7 +69,7 @@ public class LoginTest {
 
 
     @Test
-    public void testErrorMessageOnInvalidPasswordLogin() {
+    public void testErrorMessageOnInvalidLogin() {
         System.setProperty("webdriver.chrome.driver","C:/Users/kumar/Documents/ThoughtWorks/chromedriver.exe");
         WebDriver driver3 = new ChromeDriver();
         //driver3.manage().deleteAllCookies();
@@ -93,30 +93,7 @@ public class LoginTest {
         driver3.quit();
     }
 
-    @Test
-    public void testErrorMessageOnInvalidUsernameLogin() {
-        System.setProperty("webdriver.chrome.driver","C:/Users/kumar/Documents/ThoughtWorks/chromedriver.exe");
-        WebDriver driver4 = new ChromeDriver();
-        //driver4.manage().deleteAllCookies();
-        driver4.get("https://spree-vapasi.herokuapp.com/");
 
-        WebDriverWait wait = new WebDriverWait(driver4,30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='link-to-login']/a")));
-        driver4.findElement(By.xpath("//*[@id='link-to-login']/a")).click();
-
-        WebElement username = driver4.findElement(By.id("spree_user_email"));
-        username.sendKeys("k@gmail.com");
-
-        WebElement password = driver4.findElement(By.id("spree_user_password"));
-        password.sendKeys("Christin#30");
-        driver4.findElement(By.name("commit")).click();
-
-        //This will capture the message
-        String error_msg = driver4.findElement(By.cssSelector("div.alert.alert-error")).getText();
-        Assert.assertEquals(error_msg,"Invalid email or password.");
-
-        driver4.quit();
-    }
 
 
 }

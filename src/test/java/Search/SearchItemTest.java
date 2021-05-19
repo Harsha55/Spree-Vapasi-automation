@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class SearchItemTest {
@@ -26,6 +27,7 @@ public class SearchItemTest {
         Thread.sleep(3000);
         driver.quit();
     }
+
 
     @Test
     public void SearchAnItemAndAddToCart() throws InterruptedException {
@@ -54,7 +56,7 @@ public class SearchItemTest {
         wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("content")));
 
-        Assert.assertTrue(driver.getTitle().equals("Shopping Cart - Spree Demo Site"));
+        Assert.assertEquals(driver.getTitle(), "Shopping Cart - Spree Demo Site");
 
         String expectedText = driver.findElement(By.xpath("//*[@id='line_items']/tr/td[2]/h4/a")).getText();
 
