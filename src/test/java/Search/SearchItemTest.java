@@ -13,13 +13,13 @@ import org.testng.annotations.Test;
 public class SearchItemTest {
 
     WebDriverWait wait = null;
+    String rootDir = System.getProperty("user.dir") + "/chromedriver/chromedriver.exe";
+
     @Test
     public void SearchAnItem() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","C:/Users/kumar/Documents/ThoughtWorks/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",rootDir);
         WebDriver driver = new ChromeDriver();
         driver.get("https://spree-vapasi.herokuapp.com/");
-        //new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.id("Keywords")));
-
         WebElement search_bar = driver.findElement(By.id("keywords"));
         search_bar.click();
         search_bar.sendKeys("shirt");
@@ -31,7 +31,7 @@ public class SearchItemTest {
 
     @Test
     public void SearchAnItemAndAddToCart() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","C:/Users/kumar/Documents/ThoughtWorks/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",rootDir);
         WebDriver driver = new ChromeDriver();
         driver.get("https://spree-vapasi.herokuapp.com/");
         //new WebDriverWait(driver,30).until(ExpectedConditions.visibilityOfElementLocated(By.id("Keywords")));
